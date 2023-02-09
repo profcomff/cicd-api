@@ -6,3 +6,4 @@ uvicorn
 alembic
 SQLAlchemy
 gunicorn
+auth_lib_profcomff[fastapi]

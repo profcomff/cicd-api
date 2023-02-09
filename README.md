@@ -1,7 +1,17 @@
 # ci-api
 
-todo_later
+API для запуска CI тасков на серверах.
+Для использования сделайте запрос следующего вида по адресу, на котором настроено CI API для вашего сервера
 
+curl -X 'POST' \
+  'https://ci.api.profcomff.com/{action}' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: token {token}' \
+  -d '{
+  "repo_url": "string",
+  "commit_hash": "string"
+}'
 ## Запуск
 
 1) Перейдите в папку проекта
