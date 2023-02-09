@@ -23,4 +23,4 @@ app.add_middleware(
     allow_headers=settings.CORS_ALLOW_HEADERS,
 )
 
-app.include_router(script_router, prefix='/script', tags=['User'])
+app.include_router(script_router, prefix='', tags=['User'])

@@ -1,10 +1,9 @@
-import pytest
 import json
-from starlette import status
 
 
 def test_script_execute(client):
-    url="/script/run"
+    action = "test_script"
+    url=f"/{action}"
     body = {
         "repo_url": 'surname',
         "commit_hash": 'union_number'
