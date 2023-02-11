@@ -3,6 +3,7 @@
 API для запуска CI тасков на серверах.
 Для использования сделайте запрос следующего вида по адресу, на котором настроено CI API для вашего сервера
 
+```
 curl -X 'POST' \
   'https://ci.api.profcomff.com/{action}' \
   -H 'accept: application/json' \
@@ -12,6 +13,8 @@ curl -X 'POST' \
   "repo_url": "string",
   "commit_hash": "string"
 }'
+```
+
 ## Запуск
 
 1) Перейдите в папку проекта
@@ -21,7 +24,7 @@ curl -X 'POST' \
 foo@bar:~$ python3 -m venv ./venv/
 ```
 
-3) Установите библиотеки 
+3) Установите библиотеки
 ```console
 foo@bar:~$ pip install -r requirements.txt
 ```
