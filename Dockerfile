@@ -10,5 +10,4 @@ COPY ./migrations /migrations/
 
 COPY ./${APP_NAME} /app/${APP_NAME}
 
-
-
+COPY ./scripts /app/scripts
