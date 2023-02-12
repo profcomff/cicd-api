@@ -35,6 +35,4 @@ foo@bar:~$ python -m app
 
 ## ENV-file description
 
-DB_DSN=
-
----
+`AUTH_URL` – url корня API авторизации профкома, по умолчанию `https://auth.api.test.profcomff.com/`
