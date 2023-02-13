@@ -17,24 +17,30 @@ curl -X 'POST' \
 
 ## Запуск
 
-1) Перейдите в папку проекта
+На проде запуск производится через Docker Compose
 
-2) Создайте виртуальное окружение командой:
-```console
-foo@bar:~$ python3 -m venv ./venv/
-```
+```docker-compose
+version: '3'
 
-3) Установите библиотеки
-```console
-foo@bar:~$ pip install -r requirements.txt
-```
-4) Запускайте приложение!
-```console
-foo@bar:~$ python -m app
+services:
+  ci-api:
+    image: ghcr.io/profcomff/ci-api:latest
+    restart: always
+    environment:
+      - AUTH_URL=https://auth.api.profcomff.com/
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      web:
+        aliases:
+          - ci_api
+
+networks:
+  web:
+    external: true
+    name: web
 ```
 
 ## ENV-file description
 
-DB_DSN=
-
----
+`AUTH_URL` – url корня API авторизации профкома, по умолчанию `https://auth.api.test.profcomff.com/`

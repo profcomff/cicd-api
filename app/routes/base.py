@@ -2,18 +2,10 @@ from fastapi import FastAPI
 
 from ..settings import Settings
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi_sqlalchemy import DBSessionMiddleware
 from app.routes.script_launch import router as script_router
 
 settings = Settings()
 app = FastAPI()
-
-app.add_middleware(
-    DBSessionMiddleware,
-    db_url=settings.DB_DSN,
-    session_args={"autocommit": False},
-    engine_args={"pool_pre_ping": True},
-)
 
 app.add_middleware(
     CORSMiddleware,
