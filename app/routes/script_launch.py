@@ -14,9 +14,11 @@ class Input(BaseModel):
         description='url of repository, str',
         example='https://github.com/profcomff/print-api.git'
     )
-    commit_hash: str = Field(        
-        description='commit hash, str',
-        example='f7cf8ea038edfb31cc8f7dd880dbb53e61980d8c')
+    git_ref: str = Field(
+        description='git reference, str',
+        example='f7cf8ea038edfb31cc8f7dd880dbb53e61980d8c'
+    )
+
 
 class SendOutput(BaseModel):
     code: int = Field(
@@ -30,8 +32,7 @@ class SendOutput(BaseModel):
     response_model = SendOutput
 )
 async def run_script(action: str, inp: Input, user: UnionAuth = Depends(auth)):
-    """runs a bash script, located in scripts/{action}. The script takes 2 arguments: commit_hash and repo_url"""
-    code= await run(f"./scripts/{action}.sh   --repo_url {inp.repo_url} --commit_hash {inp.commit_hash}")
-    return {
-        'code': code
-    }
+    """runs a bash script, located in scripts/{action}. The script takes 2 arguments: git_ref and repo_url"""
+
+    code = await run(f"python3 ./scripts/{action}.py --repo-url {inp.repo_url} --git-ref {inp.git_ref}")
+    return {'code': code}

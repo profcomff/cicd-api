@@ -4,13 +4,13 @@ POSITIONAL_ARGS=()
 
 while [[ $# -gt 0 ]]; do
   case $1 in
-    --repo_url)
+    --repo-url)
       REPO="$2"
       shift # past argument
       shift # past value
       ;;
-    --commit_hash)
-      COMMIT="$2"
+    --git-ref)
+      REF="$2"
       shift # past argument
       shift # past value
       ;;
@@ -29,4 +29,4 @@ done
 set -- "${POSITIONAL_ARGS[@]}" # restore positional parameters
 
 echo "repo_url=${REPO}"
-echo "commit_hash=${COMMIT}"
+echo "git_ref=${REF}"
