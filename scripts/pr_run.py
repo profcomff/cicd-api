@@ -12,12 +12,13 @@ def get_args():
 
 if __name__ == "__main__":
     args = get_args()
-    _, org, repo = args.repo_url.rsplit('/', 2)
+    org, repo = args.repo_url.remove_prefix('https://github.com/').rsplit('/', 1)
     pr_num = re.match("^refs/pull/(?P<pr_num>\d+)", args.git_ref).group('pr_num')
+    Popen(['docker', 'rm', '-f', f'pkff_dev__{repo}__pr-{pr_num}']).communicate()
     Popen([
         'docker', 'run',
         '--rm', '--detach',
         '--network', 'web',
-        '--name', f'pkff_dev__{repo}__pr{pr_num}',
-        f'ghcr.io/{org}/{repo}:latest'
+        '--name', f'pkff_dev__{repo}__pr-{pr_num}',
+        f'ghcr.io/{org}/{repo}:pr-{pr_num}'
     ]).communicate()
