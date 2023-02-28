@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-# Я насрал
+# Я насрал ыыы
 
 
 __all__ = ('BaseModel',)
