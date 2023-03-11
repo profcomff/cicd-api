@@ -14,6 +14,9 @@ RUN apt-get update \
     && apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 COPY ./requirements.txt /app/
+COPY ./logging_prod.conf /app/
+COPY ./logging_test.conf /app/
+
 RUN pip install -U -r /app/requirements.txt
 
 COPY ./${APP_NAME} /app/${APP_NAME}
