@@ -22,7 +22,7 @@ jobs:
           pip install -r requirements.txt -r requirements.dev.txt
       - name: Build coverage file
         run: |
-          pytest --showlocals --cache-clear --cov=auth_backend tests > pytest-coverage.txt
+          pytest --showlocals --cache-clear --cov=app tests > pytest-coverage.txt
       - name: Print report
         if: always()
         run: |

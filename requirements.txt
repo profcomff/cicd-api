@@ -3,3 +3,4 @@ pydantic[dotenv]
 uvicorn
 gunicorn
 auth_lib_profcomff[fastapi]
+logging-profcomff
