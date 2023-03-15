@@ -12,6 +12,6 @@ def get_args():
 
 if __name__ == "__main__":
     args = get_args()
-    org, repo = args.repo_url.remove_prefix('https://github.com/').rsplit('/', 1)
+    org, repo = args.repo_url.removeprefix('https://github.com/').rsplit('/', 1)
     pr_num = re.match("^refs/pull/(?P<pr_num>\d+)", args.git_ref).group('pr_num')
     Popen(['docker', 'rm', '-f', f'pkff_dev__{repo}__pr-{pr_num}']).communicate()
