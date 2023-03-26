@@ -1,9 +1,11 @@
-from fastapi import APIRouter, Depends
-from .auth import auth
 from auth_lib.fastapi import UnionAuth
+from fastapi import APIRouter, Depends
 from pydantic import Field
+
 from app.schema import BaseModel
 from app.utils.scripts import run
+
+from .auth import auth
 
 
 router = APIRouter()
