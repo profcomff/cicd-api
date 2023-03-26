@@ -1,8 +1,10 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.routes.script_launch import router as script_router
 
 from ..settings import Settings
-from fastapi.middleware.cors import CORSMiddleware
-from app.routes.script_launch import router as script_router
+
 
 settings = Settings()
 app = FastAPI()
