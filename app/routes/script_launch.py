@@ -3,12 +3,12 @@ from fastapi import APIRouter, Depends
 from pydantic import Field
 
 from app.schema import BaseModel
+from app.settings import get_settings
 from app.utils.scripts import run
-
-from .auth import auth
 
 
 router = APIRouter()
+settings = get_settings()
 
 
 class Input(BaseModel):
@@ -21,7 +21,11 @@ class SendOutput(BaseModel):
 
 
 @router.post('/{action:str}', response_model=SendOutput)
-async def run_script(action: str, inp: Input, user: UnionAuth = Depends(auth)):
+async def run_script(
+    action: str,
+    inp: Input,
+    user: dict = Depends(UnionAuth(scopes=[] if settings.ALLOWED_SCOPE is None else [settings.ALLOWED_SCOPE]))
+):
     """runs a bash script, located in scripts/{action}. The script takes 2 arguments: git_ref and repo_url"""
 
     code = await run(f"python3 ./scripts/{action}.py --repo-url {inp.repo_url} --git-ref {inp.git_ref}")

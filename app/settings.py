@@ -6,12 +6,12 @@ from pydantic import AnyUrl, BaseSettings, PostgresDsn
 class Settings(BaseSettings):
     """Application settings"""
 
+    ALLOWED_SCOPE: str | None = None
+
     CORS_ALLOW_ORIGINS: list[str] = ['*']
     CORS_ALLOW_CREDENTIALS: bool = True
     CORS_ALLOW_METHODS: list[str] = ['*']
     CORS_ALLOW_HEADERS: list[str] = ['*']
-
-    AUTH_URL: AnyUrl = "https://auth.api.test.profcomff.com/"
 
     class Config:
         """Pydantic BaseSettings config"""
