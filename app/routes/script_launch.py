@@ -25,7 +25,7 @@ async def run_script(
     action: str,
     inp: Input,
     user: dict = Depends(
-        UnionAuth(scopes=[] if str(settings.ALLOWED_SCOPE) is None else [str(settings.ALLOWED_SCOPE)])
+        UnionAuth(scopes=[] if str(settings.ALLOWED_SCOPE) is None else [settings.ALLOWED_SCOPE])
     ),
 ):
     """runs a bash script, located in scripts/{action}. The script takes 2 arguments: git_ref and repo_url"""
