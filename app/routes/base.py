@@ -5,7 +5,7 @@ from app.routes.script_launch import router as script_router
 
 from ..settings import Settings
 
-    
+
 settings = Settings()
 app = FastAPI()
 
