@@ -23,6 +23,8 @@ if __name__ == "__main__":
             '--detach',
             '--network',
             'web',
+            '--pull',
+            'always',
             '--name',
             f'pkff_dev__{repo}__pr-{pr_num}',
             f'ghcr.io/{org}/{repo}:pr-{pr_num}',
