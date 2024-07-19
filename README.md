@@ -3,6 +3,8 @@
 API для запуска CI тасков на серверах.
 Для использования сделайте запрос следующего вида по адресу, на котором настроено CI API для вашего сервера
 
+[<img src="https://cdn.profcomff.com/easycode/easycode.svg" width="200"></img>](https://easycode.profcomff.com/templates/docker-fastapi/workspace?mode=manual&param.Repository+URL=https://github.com/profcomff/cicd-api.git&param.Working+directory=cicd-api)
+
 ```
 curl -X 'POST' \
   'https://ci.api.profcomff.com/{action}' \
